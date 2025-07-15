@@ -1,8 +1,5 @@
-<html>
-	<head>
-		<title> Welcome Page </title>
-	</head>
-	<body>
+<%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>
 	<div>
 	    <div>Welcome to the junes!</div>
 
@@ -10,5 +7,4 @@
 
 	    <div><a href="/list-todos">Manage</a> your Todos</div>
     </div>
-	</body>
-</html>
+<%@ include file="common/footer.jspf" %>
