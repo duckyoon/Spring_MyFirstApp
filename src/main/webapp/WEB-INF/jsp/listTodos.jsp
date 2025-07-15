@@ -19,6 +19,7 @@
                     <th>targetDate</th>
                     <th>done</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,7 @@
                         <td>${todo.done}</td>
                         <!-- 삭제할 id를 url로 전달 -->
                         <td><a href="delete-todo?id=${todo.id}" class="btn btn-warning">DELETE</a></td>
+                        <td><a href="update-todo?id=${todo.id}" class="btn btn-success">UPDATE</a></td>
                     </tr>
                 </c:forEach>
             </tbody>
