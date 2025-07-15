@@ -5,6 +5,7 @@
 		<title> List Todos Page </title>
 
 		<link rel="stylesheet" href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css">
+
 	</head>
 	<body>
 	<div class="container">
@@ -14,10 +15,9 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>id</th>
-                    <th>description</th>
-                    <th>targetDate</th>
-                    <th>done</th>
+                    <th>Description</th>
+                    <th>Target Date</th>
+                    <th>is Done?</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -25,7 +25,6 @@
             <tbody>
                 <c:forEach items="${todos}" var="todo">
                     <tr>
-                        <td>${todo.id}</td>
                         <td>${todo.description}</td>
                         <td>${todo.targetDate}</td>
                         <td>${todo.done}</td>
@@ -41,5 +40,6 @@
     </div>
     <script src="/webjars/jquery/3.7.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
 	</body>
 </html>

@@ -47,7 +47,8 @@ public class TodoController {
             // validation error 발생하면 리턴
             return "todo";
         }
-        todoService.addTodo((String)model.get("name"), todo.getDescription(), LocalDate.now().plusYears(1),false);
+        String username = (String) model.get("name");
+        todoService.addTodo(username, todo.getDescription(), todo.getTargetDate(),false);
         return "redirect:list-todos";
     }
 
