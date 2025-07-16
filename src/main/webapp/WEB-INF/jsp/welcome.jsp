@@ -1,9 +1,9 @@
 <%@ include file="common/header.jspf" %>
 <%@ include file="common/navigation.jspf" %>
-	<div>
-	    <div>Welcome to the junes!</div>
+	<div class="container">
+	    <h2>Welcome to the junes!</h2>
 
-	    <div>Your name is : ${name}</div>
+	    <h3>Your name is : ${name}</h3>
 
 	    <div><a href="/list-todos">Manage</a> your Todos</div>
     </div>
