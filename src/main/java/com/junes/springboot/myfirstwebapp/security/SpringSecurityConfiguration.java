@@ -20,17 +20,24 @@ public class SpringSecurityConfiguration {
     @Bean
     public InMemoryUserDetailsManager createUserDetailsManager() {
 
+        UserDetails userDetails1 = createUserDetails("junes", "1234");
+        UserDetails userDetails2 = createUserDetails("janes", "1234");
+
+        return new InMemoryUserDetailsManager(userDetails1, userDetails2);
+    }
+
+    private UserDetails createUserDetails(String junes, String number) {
         // 입력된 문자열을 Bcrypt를 사용해서 암호화
         Function<String, String> passwordEncoder
                 = input -> passwordEncoder().encode(input) ;
 
         UserDetails userDetails = User.builder()
                                     .passwordEncoder(passwordEncoder)
-                                    .username("junes")
-                                    .password("1234")
+                                    .username(junes)
+                                    .password(number)
                                     .roles("USER", "ADMIN")
                                     .build();
-        return new InMemoryUserDetailsManager((userDetails));
+        return userDetails;
     }
 
     @Bean
