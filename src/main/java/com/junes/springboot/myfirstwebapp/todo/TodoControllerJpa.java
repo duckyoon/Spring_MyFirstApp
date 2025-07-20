@@ -1,36 +1,39 @@
 package com.junes.springboot.myfirstwebapp.todo;
 
+import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import jakarta.validation.Valid;
 
 import java.time.LocalDate;
 import java.util.List;
 
-//@Controller
+@Controller
 @SessionAttributes("name")
-public class TodoController {
+public class TodoControllerJpa {
 
     private TodoService todoService;
+    private TodoRepository todoRepository;
 
-    public TodoController(TodoService todoService) {
+    public TodoControllerJpa(TodoService todoService, TodoRepository todoRepository) {
+        super();
         this.todoService = todoService;
+        this.todoRepository = todoRepository;
     }
 
     @RequestMapping("/list-todos")
     public String listAllTodos(ModelMap model){
         // 리팩토링 -> 메소드 추출로 변경 진행
         String username = getLoggedInUsername(model);
-        // 하드코딩 ID 수정
-        List<Todo> todos = todoService.findByUsername(username);
+
+        // 정적으로 받아오던 것을 h2 데이터베이스에서 동적으로 받아오게 설정
+        List<Todo> todos = todoRepository.findByUsername(username);
         model.addAttribute("todos", todos);
         return "listTodos";
     }

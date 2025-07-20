@@ -13,6 +13,10 @@ import java.time.LocalDate;
 @Entity // 데이터베이스 테이블에 매칭됨(자동으로 H2 데이터베이스에 생성됨)
 public class Todo {
 
+    public Todo(){
+        
+    }
+
     // DB id 설정 및 자동 생성 설정
     @Id
     @GeneratedValue
