@@ -1,13 +1,25 @@
 package com.junes.springboot.myfirstwebapp.todo;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import org.springframework.boot.convert.DataSizeUnit;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
+//@Entity(name="TodoABC") // database 이름 지정
+@Entity // 데이터베이스 테이블에 매칭됨(자동으로 H2 데이터베이스에 생성됨)
 public class Todo {
 
+    // DB id 설정 및 자동 생성 설정
+    @Id
+    @GeneratedValue
     private int id;
+
+    // 컬럼 이름 설정
+    @Column(name = "Username")
     private String username;
 
     @Size(min=10, message="Enter atleast 10 characters")
